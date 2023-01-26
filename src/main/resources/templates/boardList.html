@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>글 작성자</th>
+            <th>글 제목</th>
+        </tr>
+        <tr th:each="boards : ${contents}">
+            <td><a th:href="@{'/boards/' + ${boards.id}}"><span th:text="${boards.author}"></span></a></td>
+            <td><a th:href="@{'/boards/' + ${boards.id}}"><span th:text="${boards.title}"></span></a></td>
+        </tr>
+    </table>
+
+    <a href="/boards/post">글 작성하기</a>
+</body>
+</html>
