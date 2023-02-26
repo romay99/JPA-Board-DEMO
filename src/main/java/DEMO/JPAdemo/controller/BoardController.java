@@ -40,8 +40,8 @@ public class BoardController {
     }
 
     @PostMapping("/post")  //게시물 작성 메서드
-    public String postContent(BoardEntity boardEntity) {
-        boardService.save(boardEntity);
+    public String postContent(BoardDTO boardDTO) {
+        boardService.save(boardDTO);
         return "redirect:/boards/list";
     }
 
@@ -53,8 +53,8 @@ public class BoardController {
     }
 
     @PostMapping("/update/{id}")  // 게시물 수정 메서드
-    public String updateContentById(@PathVariable("id") int id, BoardEntity boardEntity) {
-        boardService.save(boardEntity);
+    public String updateContentById(@PathVariable("id") int id, BoardDTO boardDTO) {
+        boardService.update(boardDTO,id);
         return "redirect:/boards/list";
     }
 

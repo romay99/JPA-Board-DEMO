@@ -15,9 +15,22 @@ import java.util.Optional;
 public class BoardService {
     private final RepositoryInterface repository;
 
-    public BoardEntity save(BoardEntity boardEntity) {
+    public BoardDTO save(BoardDTO boardDTO) {
+        BoardEntity boardEntity = new BoardEntity();
+        boardEntity.setTitle(boardDTO.getTitle());
+        boardEntity.setAuthor(boardDTO.getAuthor());
+        boardEntity.setContent(boardDTO.getContent());
         repository.save(boardEntity);
-        return boardEntity;
+        return boardDTO;
+    }
+
+    public BoardDTO update(BoardDTO boardDTO , int id) {
+        BoardEntity boardEntity = repository.findById(id);
+        boardEntity.setTitle(boardDTO.getTitle());
+        boardEntity.setAuthor(boardDTO.getAuthor());
+        boardEntity.setContent(boardDTO.getContent());
+        repository.save(boardEntity);
+        return boardDTO;
     }
 
     public Optional<BoardEntity> findById(int id) {
